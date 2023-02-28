@@ -1,0 +1,16 @@
+version: "3.9"
+
+services:
+  db_graphql:
+    image: postgres:15.2-alpine
+    container_name: "db-graphql"
+    env_file:
+      - .env
+    ports:
+      - "5555:5432"
+    volumes:
+      - db_graphql_data:/var/lib/postgresql/data
+    restart: on-failure
+
+volumes:
+  db_graphql_data:
