@@ -1,4 +1,4 @@
-package com.miguelromero717.graphql.api.customers
+package com.miguelromero717.graphql.api.products
 
 import java.time.Instant
 import javax.persistence.Entity
@@ -7,13 +7,13 @@ import javax.persistence.Id
 import javax.persistence.Table
 
 @Entity
-@Table(name = "customers")
-class Customer  {
+@Table(name = "products")
+class Product {
     @Id
     @GeneratedValue
     var id: Long? = null
     lateinit var name: String
-    lateinit var email: String
-    lateinit var country: String
+    var description: String? = null
+    var price: Double? = 0.0
     var createdAt: Instant? = Instant.now()
 }
