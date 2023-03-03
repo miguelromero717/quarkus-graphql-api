@@ -19,6 +19,16 @@ class ProductGraphQLResource {
         return productRepository.findAll().list()
     }
 
+    @Query("getProductById")
+    fun getProductById(id: Long): Product? {
+        return productRepository.findById(id)
+    }
+
+    @Query("getProductByName")
+    fun getProductByName(name: String): Product? {
+        return productRepository.find("name = ?1", name).firstResult()
+    }
+
     @Transactional
     @Mutation("addProduct")
     fun addProduct(product: Product): Product {

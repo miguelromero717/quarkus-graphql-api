@@ -19,6 +19,21 @@ class CustomerGraphQLResource {
         return customerRepository.findAll().list()
     }
 
+    @Query("getCustomerById")
+    fun getCustomerById(id: Long): Customer? {
+        return customerRepository.findById(id)
+    }
+
+    @Query("getCustomerByName")
+    fun getCustomerByName(name: String): Customer? {
+        return customerRepository.find("name = ?1", name).firstResult()
+    }
+
+    @Query("getCustomerByEmail")
+    fun getCustomerByEmail(email: String): Customer? {
+        return customerRepository.find("email = ?1", email).firstResult()
+    }
+
     @Transactional
     @Mutation("addCustomer")
     fun addCustomer(customer: Customer): Customer {
